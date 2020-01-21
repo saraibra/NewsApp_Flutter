@@ -9,18 +9,23 @@ class OnBoarding extends StatefulWidget {
 }
 
 class _OnBoardingState extends State<OnBoarding> {
-  List<PageModel> pages ;
+  List<PageModel> pages;
   ValueNotifier<int> _pageViewNotifier = ValueNotifier(0);
-  void _addPages(){
-    pages =  List<PageModel>();
-    pages.add(PageModel("welcome", "Making friends is easy fff kfjjhd", 'assets/images/bg.png',Icons.ac_unit));
-    pages.add(PageModel("alarm", "Making friends is easy fff kfjjhd", 'assets/images/image.jpg',Icons.alarm));
-    pages.add(PageModel("page", "Making friends is easy fff kfjjhd", 'assets/images/image2.jpg',Icons.pages));
-    pages.add(PageModel("phone", "Making friends is easy fff kfjjhd", 'assets/images/image3.jpg',Icons.smartphone));
+  void _addPages() {
+    pages = List<PageModel>();
+    pages.add(PageModel("welcome", "Making friends is easy fff kfjjhd",
+        'assets/images/bg.png', Icons.ac_unit));
+    pages.add(PageModel("alarm", "Making friends is easy fff kfjjhd",
+        'assets/images/image.jpg', Icons.alarm));
+    pages.add(PageModel("page", "Making friends is easy fff kfjjhd",
+        'assets/images/image2.jpg', Icons.pages));
+    pages.add(PageModel("phone", "Making friends is easy fff kfjjhd",
+        'assets/images/image3.jpg', Icons.smartphone));
   }
+
   @override
   Widget build(BuildContext context) {
-   _addPages();
+    _addPages();
     return Scaffold(
       body: Stack(
         children: <Widget>[
@@ -69,17 +74,15 @@ class _OnBoardingState extends State<OnBoarding> {
               );
             },
             itemCount: pages.length,
-            onPageChanged: (index){
+            onPageChanged: (index) {
               _pageViewNotifier.value = index;
             },
           ),
           Transform.translate(
-              offset: Offset(0, 175),
+            offset: Offset(0, 175),
             child: Align(
-              alignment: Alignment.center,
-              child: _displayPageIndicator(pages.length)
-            ),
-
+                alignment: Alignment.center,
+                child: _displayPageIndicator(pages.length)),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -97,13 +100,11 @@ class _OnBoardingState extends State<OnBoarding> {
                   ),
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context){
-                          // todo update seen
-                          _updateSeen();
-                         return HomeScreen();
-                        }
-                        )
-                    );
+                        MaterialPageRoute(builder: (context) {
+                      // todo update seen
+                      _updateSeen();
+                      return HomeScreen();
+                    }));
                   },
                 ),
               ),
@@ -114,32 +115,31 @@ class _OnBoardingState extends State<OnBoarding> {
     );
   }
 
-Widget _displayPageIndicator(int length){
-  return PageViewIndicator(
-    pageIndexNotifier: _pageViewNotifier,
-    length: length,
-    normalBuilder: (animationController, index) => Circle(
-      size: 8.0,
-      color: Colors.grey,
-    ),
-    highlightedBuilder: (animationController, index) => ScaleTransition(
-      scale: CurvedAnimation(
-        parent: animationController,
-        curve: Curves.ease,
+  Widget _displayPageIndicator(int length) {
+    return PageViewIndicator(
+      pageIndexNotifier: _pageViewNotifier,
+      length: length,
+      normalBuilder: (animationController, index) => Circle(
+        size: 8.0,
+        color: Colors.grey,
       ),
-      child: Circle(
-        size: 12.0,
-        color: Colors.red,
+      highlightedBuilder: (animationController, index) => ScaleTransition(
+        scale: CurvedAnimation(
+          parent: animationController,
+          curve: Curves.ease,
+        ),
+        child: Circle(
+          size: 12.0,
+          color: Colors.red,
+        ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-void _updateSeen() async{
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setBool('seen', true);
-
-}
+  void _updateSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('seen', true);
+  }
 }
 
 class PageModel {
