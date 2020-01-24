@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app3/Models/nav_menu.dart';
+import 'package:flutter_app3/Screens/HomeScreen.dart';
+import 'package:flutter_app3/Screens/headlines_news.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -6,8 +9,50 @@ class NavigationDrawer extends StatefulWidget {
 }
 
 class _NavigationDrawerState extends State<NavigationDrawer> {
+  List<NavMenuItem> navigationMenu = [
+    NavMenuItem('Explore', () =>HomeScreen()),
+    NavMenuItem('Headlines news',()=> HeadlinesNews()),
+
+  ];
+  List<String> navMenu = [
+    'Explore',
+    'Headline news',
+    'Read later',
+    'Videos',
+    'Photos',
+    'Settings',
+    'Logout'
+  ];
   @override
   Widget build(BuildContext context) {
-    return Drawer();
+    return Drawer(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 75.0, left: 24),
+        child: ListView.builder(
+          itemBuilder: (context, position) {
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                title: Text(
+                  navigationMenu[position].title,
+                  style: TextStyle(color: Colors.grey.shade700, fontSize: 22),
+                ),
+                trailing: Icon(
+                  Icons.chevron_right,
+                  color: Colors.grey.shade400,
+                ),
+                onTap: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context){
+                    return 
+                  navigationMenu[position].destination();
+                  }));
+                },
+              ),
+            );
+          },
+          itemCount: navigationMenu.length,
+        ),
+      ),
+    );
   }
 }

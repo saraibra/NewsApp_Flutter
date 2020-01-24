@@ -32,7 +32,9 @@ class _FavouritesState extends State<Favourites> {
             child: Column(
               children: <Widget>[
                 _drawOuterRaw(),
-                SizedBox(height: 16,),
+                SizedBox(
+                  height: 16,
+                ),
                 _newsItemRaw(),
               ],
             ),
