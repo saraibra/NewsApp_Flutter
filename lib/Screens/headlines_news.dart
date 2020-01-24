@@ -3,7 +3,6 @@ import 'package:flutter_app3/shared_ui/NavigationDrawer.dart';
 
 import 'home_tabs/Favourites.dart';
 import 'home_tabs/Popular.dart';
-import 'home_tabs/WhatsNews.dart';
 class HeadlinesNews extends StatefulWidget {
   @override
   _HeadlinesNewsState createState() => _HeadlinesNewsState();

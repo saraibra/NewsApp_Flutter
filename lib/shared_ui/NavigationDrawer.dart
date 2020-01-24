@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app3/Models/nav_menu.dart';
 import 'package:flutter_app3/Screens/HomeScreen.dart';
 import 'package:flutter_app3/Screens/headlines_news.dart';
+import 'package:flutter_app3/Screens/twitter_feeds.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
   List<NavMenuItem> navigationMenu = [
     NavMenuItem('Explore', () =>HomeScreen()),
     NavMenuItem('Headlines news',()=> HeadlinesNews()),
-
+    NavMenuItem('Twitter feeds',()=> TwitterFeeds()),
   ];
   List<String> navMenu = [
     'Explore',
@@ -42,6 +43,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                   color: Colors.grey.shade400,
                 ),
                 onTap: () {
+                   Navigator.pop(context);
                   Navigator.push(context,MaterialPageRoute(builder: (context){
                     return 
                   navigationMenu[position].destination();
