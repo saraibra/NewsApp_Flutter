@@ -22,14 +22,19 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
       ),
       drawer: NavigationDrawer(),
       body: ListView.builder(
+        padding: EdgeInsets.all(8),
         itemBuilder: (context, position) {
-          return Card(
-            child: Column(
-              children: <Widget>[
-                _cardHeader(),
-                _cardBody(),
-                _cardFooter(),
-              ],
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  _cardHeader(),
+                  _cardBody(),
+                  _drawLine(),
+                  _cardFooter(),
+                ],
+              ),
             ),
           );
         },
@@ -56,9 +61,15 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
                   'Christina Meyers',
                   style: TextStyle(color: Colors.black),
                 ),
+                SizedBox(
+                  width: 8,
+                ),
                 Text(
                   '@ch_meyers',
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(
+                      color: Colors.grey.shade900,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
                 ),
               ],
             ),
@@ -79,7 +90,9 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
     return Padding(
       padding: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
       child: Text(
-          'We also talk about the future of work as the robots advance ,and we ask whether a reto phone '),
+          'We also talk about the future of work as the robots advance ,and we ask whether a reto phone '
+          ,style: TextStyle(fontSize: 16,height: 1.2,color: Colors.grey.shade900),
+          ),
     );
   }
 
@@ -90,11 +103,16 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           IconButton(
-            icon: Icon(Icons.repeat),
+            icon: Icon(Icons.repeat,
+            size: 20,),
             color: Colors.orange,
+            
             onPressed: () {},
           ),
-          Text('25'),
+          Text(
+            '25',
+            style: TextStyle(color: Colors.grey, fontSize: 16),
+          ),
           Row(
             children: <Widget>[
               FlatButton(
@@ -119,6 +137,13 @@ class _TwitterFeedsState extends State<TwitterFeeds> {
           ),
         ],
       ),
+    );
+  }
+  Widget _drawLine(){
+    return Container(
+      height: 1,
+      color: Colors.grey.shade200,
+      margin: EdgeInsets.only(top: 16),
     );
   }
 }

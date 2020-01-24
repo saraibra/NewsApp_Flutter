@@ -17,6 +17,11 @@ class _HomeScreenState extends State<HomeScreen>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
   }
+  @override
+  void dispose() {
+    _tabController.dispose(); // to remove resources to reduce memory
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
