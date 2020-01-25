@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app3/Screens/OnBoarding.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_app3/Screens/HomeScreen.dart';
-import 'package:flutter_app3/Style/AppTheme.dart';
+import 'package:flutter_app3/Utilities/AppTheme.dart';
 
 main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
